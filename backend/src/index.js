@@ -7,30 +7,29 @@ import { toNodeHandler } from "better-auth/node";
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 // Middleware
 app.use(express.json());
-
-// Logging de requisições
-app.use((req, res, next) => {
-  console.log(`${req.method} ${req.path}`);
-  next();
-});
 
 // Rotas de autenticação do Better Auth
 // Isso cria todas as rotas automaticamente!
 app.use("/api/auth", toNodeHandler(auth));
 
+// Rota raiz
+app.get("/", (req, res) => {
+  res.json({ 
+    message: "Backend running",
+    endpoints: {
+      health: "GET /health",
+      auth: "POST /api/auth/sign-up, /api/auth/sign-in, etc"
+    }
+  });
+});
+
 // Health check
 app.get("/health", (req, res) => {
   res.json({ status: "OK" });
-});
-
-// Middleware de erro
-app.use((err, req, res, next) => {
-  console.error("Erro:", err);
-  res.status(500).json({ error: err.message || "Erro interno" });
 });
 
 // Iniciar servidor
