@@ -1,16 +1,14 @@
-// frontend\src\components\login-form.jsx
-"use client"; // ← torna o componente interativo no browser
+"use client";
 
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Button } from "./ui/button";
-import { Field, FieldDescription, FieldGroup, FieldLabel } from "./ui/field";
-import { Input } from "./ui/input";
+import { Button } from "./button";
+import { Field, FieldDescription, FieldGroup, FieldLabel } from "./field";
+import { Input } from "./input";
 import { authClient } from "@/lib/auth-client";
 
 export default function LoginForm() {
-  // Estado dos campos
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -19,7 +17,7 @@ export default function LoginForm() {
   const router = useRouter();
 
   async function handleSubmit(e) {
-    e.preventDefault(); // impede o comportamento padrão do form (reload da página)
+    e.preventDefault();
     setError("");
     setLoading(true);
 
@@ -35,7 +33,8 @@ export default function LoginForm() {
       return;
     }
 
-    router.push("/dashboard"); // redireciona após login com sucesso
+    router.push("/");
+    router.refresh();
   }
 
   return (
@@ -43,13 +42,12 @@ export default function LoginForm() {
       <form onSubmit={handleSubmit}>
         <FieldGroup>
           <div className="flex flex-col items-center gap-2 text-center mb-10">
-            <h1 className="text-xl font-bold">Bem-vindo ao minURL</h1>
+            <h1 className="text-xl font-bold">Bem-vindo a min store</h1>
             <FieldDescription>
               Não tem uma conta? <Link href="/register">Cadastre-se</Link>
             </FieldDescription>
           </div>
 
-          {/* Mensagem de erro */}
           {error && (
             <p className="text-sm text-red-500 text-center mb-2">{error}</p>
           )}
@@ -59,7 +57,7 @@ export default function LoginForm() {
             <Input
               id="email"
               type="email"
-              placeholder="mary.doe@email.com"
+              placeholder="joão.banana@gmail.com"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}

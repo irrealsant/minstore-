@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { useCart } from "@/context/CartContext";
+import SiteHeader from "@/components/site-header";
 
 export default function CheckoutPage() {
   const router = useRouter();
@@ -25,7 +26,7 @@ export default function CheckoutPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    
+
     setTimeout(() => {
       alert("Pedido realizado com sucesso!");
       clearCart();
@@ -41,6 +42,7 @@ export default function CheckoutPage() {
             <h1 className="text-2xl font-bold cursor-pointer" onClick={() => router.push("/")}>
               min store
             </h1>
+            <SiteHeader />
           </nav>
           <div className="p-6 text-center">
             <p className="text-slate-500 mb-4">Carrinho vazio</p>
@@ -58,10 +60,7 @@ export default function CheckoutPage() {
           <h1 className="text-2xl font-bold cursor-pointer" onClick={() => router.push("/")}>
             min store
           </h1>
-          <div className="flex gap-4">
-            <a href="/products" className="hover:underline">Produtos</a>
-            <a href="/cart" className="hover:underline">Carrinho</a>
-          </div>
+          <SiteHeader />
         </nav>
 
         <div className="p-6">

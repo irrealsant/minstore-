@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useCart } from "@/context/CartContext";
+import SiteHeader from "@/components/site-header";
 
 export default function CartPage() {
   const router = useRouter();
@@ -16,11 +17,7 @@ export default function CartPage() {
           <h1 className="text-2xl font-bold cursor-pointer" onClick={() => router.push("/")}>
             min store
           </h1>
-          <div className="flex gap-4 text-sm">
-            <a href="/products">Produtos</a>
-            <a href="/cart">Carrinho</a>
-            <a href="/login">Login</a>
-          </div>
+          <SiteHeader />
         </div>
       </nav>
 

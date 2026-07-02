@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/context/CartContext";
+import SiteHeader from "@/components/site-header";
 
 export default function ProductPage() {
   const [product, setProduct] = useState(null);
@@ -41,12 +42,7 @@ export default function ProductPage() {
           <p className="text-2xl font-bold">min store</p>
           <span className="text-sm text-slate-500">Minimalist store</span>
         </div>
-        <nav className="flex items-center gap-4 text-sm">
-          <a href="/products" className="text-slate-700">Produtos</a>
-          <a href="/cart" className="text-slate-700">Carrinho</a>
-          <a href="/login" className="text-slate-700">Login</a>
-          <a href="/register" className="rounded-md bg-slate-900 px-3 py-1 text-white">Cadastro</a>
-        </nav>
+        <SiteHeader />
       </header>
 
       <main className="mx-auto w-full max-w-6xl px-6 py-12">

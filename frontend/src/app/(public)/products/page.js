@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardTitle, CardDescription } from "@/components/ui/card";
+import SiteHeader from "@/components/site-header";
 
 export default function ProductsPage() {
   const [products, setProducts] = useState([]);
@@ -25,11 +26,7 @@ export default function ProductsPage() {
           <h1 className="text-2xl font-bold cursor-pointer" onClick={() => router.push("/")}>
             min store
           </h1>
-          <div className="flex gap-4 text-sm">
-            <a href="/products">Produtos</a>
-            <a href="/cart">Carrinho</a>
-            <a href="/login">Login</a>
-          </div>
+          <SiteHeader />
         </div>
       </nav>
 

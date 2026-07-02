@@ -1,13 +1,12 @@
-// frontend\src\components\register-form.jsx
 "use client";
 
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
-import { Button } from "./ui/button";
-import { Field, FieldDescription, FieldGroup, FieldLabel } from "./ui/field";
-import { Input } from "./ui/input";
+import { Button } from "./button";
+import { Field, FieldDescription, FieldGroup, FieldLabel } from "./field";
+import { Input } from "./input";
 
 export default function RegisterForm() {
   const [name, setName] = useState("");
@@ -23,7 +22,6 @@ export default function RegisterForm() {
     e.preventDefault();
     setError("");
 
-    // Validação no cliente — antes de ir ao servidor
     if (password.length < 8) {
       setError("A senha deve ter pelo menos 8 caracteres.");
       return;
@@ -48,7 +46,8 @@ export default function RegisterForm() {
       return;
     }
 
-    router.push("/dashboard");
+    router.push("/");
+    router.refresh();
   }
 
   return (
@@ -71,7 +70,7 @@ export default function RegisterForm() {
             <Input
               id="name"
               type="text"
-              placeholder="John Doe"
+              placeholder="joao banana da silva"
               required
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -82,7 +81,7 @@ export default function RegisterForm() {
             <Input
               id="email"
               type="email"
-              placeholder="m@example.com"
+              placeholder="emaildojoaobanana@gmail.com"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
